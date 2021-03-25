@@ -124,8 +124,18 @@ function Tab2() {
 
   return (
 
-
- 
+<div>
+    
+<input 
+      onChange={(e) => {
+        // console.log(rows[0].name.props.children, "rows")
+        // console.log(e.target.value);
+        let filtered = dummyrows.filter((v,i) => {
+          console.log(v , "value")
+          return v.name.toLowerCase().includes(e.target.value.toLowerCase())
+        })
+        setRows([...filtered]);
+      }}  /> 
       
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
@@ -171,6 +181,7 @@ function Tab2() {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
+    </div>
   );
 }
 
