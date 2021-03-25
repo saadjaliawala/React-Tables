@@ -8,9 +8,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Tab1 from "./tab1";
-import Tab2 from "./tab2";
-import Tab3 from "./tab3";
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -44,7 +41,6 @@ function createData(name, code, population, size) {
 }
 
 
-
 const useStyles = makeStyles({
   root: {
     width: '100%',
@@ -73,14 +69,14 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 
-function App() {
+function Tab2() {
 
   
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [rows , setRows] = useState([
-    createData("India", 'IN', 1324171354, 3287263),
+    createData("India2", 'IN', 1324171354, 3287263),
     createData('China', 'CN', 1403500365, 9596961),
     createData('Italy', 'IT', 60483973, 301340),
     createData('United States', 'US', 327167434, 9833520),
@@ -114,8 +110,6 @@ function App() {
     createData('Brazil', 'BR', 210147125, 8515767),
   ])
   const [tab1 , settab1] = useState(false);
-  const [tab2 , settab2] = useState(false);
-  const [tab3 , settab3] = useState(false);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -129,59 +123,11 @@ function App() {
   
 
   return (
-    <div>
-      {/* <input 
-      onChange={(e) => {
-        // console.log(rows[0].name.props.children, "rows")
-        // console.log(e.target.value);
-        let filtered = dummyrows.filter((v,i) => {
-          return v.name.toLowerCase().includes(e.target.value.toLowerCase())
-        })
-        setRows(filtered);
-      }}  /> */}
 
 
-<button  onClick={() => {
-  settab1(!tab1)
-  settab2(false)
-  settab3(false)
-}
-} >
- Tab1
-</button>
-
-<button  onClick={() => {
-  settab1(false)
-  settab2(!tab2)
-  settab3(false)
-}
-} >
- Tab2
-</button>
-
-<button  onClick={() => {
-  settab1(false)
-  settab2(false)
-  settab3(!tab3)
-}
-} >
- Tab3
-</button>
-
-
- {tab1 &&
- <Tab1/>
- }
-
-{tab2 &&
- <Tab2/>
- }
-
-{tab3 &&
- <Tab3/>
- }
+ 
       
-    {/* <Paper className={classes.root}>
+    <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -224,9 +170,8 @@ function App() {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
-    </Paper> */}
-    </div>
+    </Paper>
   );
 }
 
-export default App;
+export default Tab2;
