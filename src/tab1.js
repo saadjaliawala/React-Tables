@@ -77,22 +77,23 @@ function Tab1() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [selectvalue ,setselectvalue] = useState("SortBy")
   const [rows , setRows] = useState([
     createData("SECURITY OFFICER", 'F-6', 132, "Internal Security and Safety" , "Security" ),
     createData('CLOSE PROTECTION OFFICER (Team Lead)', 'F-6', 14, "Internal Security and Safety", "Security"),
     createData('CLOSE PROTECTION OFFICER (Team Lead)', 'F-5', 60, "Internal Security and Safety","Security"),
     createData('CLOSE PROTECTION OFFICER', 'F-5', 3271, "Internal Security and Safety", "Security"),
     createData('ADMINISTRATIVE ASSISTANT [Temporary]', 'F-5', 376, "Internal Security and Safety", "Security"),
-    createData('Contingent Owned Equipment Officer [Temporary]', 'F-5', 254, 7692024),
-    createData(' SYSTEMS ASSISTANTny', 'F-5', 830, 357578),
-    createData('FACILITIESMANAGEMENTASSISTANT', 'F-5', 485, 70273),
-    createData('Mexico', 'F-5', 134, 1972550),
-    createData('Japan', 'JP', 1263, 377973),
-    createData('France', 'FR', 67022000, 640679),
-    createData('United Kingdom', 'GB', 67545757, 242495),
-    createData('Russia', 'RU', 146793744, 17098246),
-    createData('Nigeria', 'NG', 200962417, 923768),
-    createData('Brazil', 'BR', 210147125, 8515767),
+    createData('Contingent Owned Equipment Officer [Temporary]', 'F-5', 254, 7692024 , "dfdf"),
+    createData(' SYSTEMS ASSISTANTny', 'F-5', 830, 357578 , "dfdf"),
+    createData('FACILITIESMANAGEMENTASSISTANT', 'F-5', 485, 70273 , "dfdf"),
+    createData('Mexico', 'F-5', 134, 1972550 , "dfdf"),
+    createData('Japan', 'JP', 1263, 377973, "dfdf"),
+    createData('France', 'FR', 67022000, 640679 , "dfdf"),
+    createData('United Kingdom', 'GB', 67545757, 242495 , "dfdf"),
+    createData('Russia', 'RU', 146793744, 17098246 , "dfdf"),
+    createData('Nigeria', 'NG', 200962417, 923768 , "dfdf"),
+    createData('Brazil', 'BR', 210147125, 8515767 , "dfdf" ),
   ])
   const [dummyrows , setdummyRows] = useState([
     createData("SECURITY OFFICER", 'F-6', 132, "Internal Security and Safety" , "Security" ),
@@ -100,16 +101,16 @@ function Tab1() {
     createData('CLOSE PROTECTION OFFICER (Team Lead)', 'F-5', 60, "Internal Security and Safety","Security"),
     createData('CLOSE PROTECTION OFFICER', 'F-5', 3271, "Internal Security and Safety", "Security"),
     createData('ADMINISTRATIVE ASSISTANT [Temporary]', 'F-5', 376, "Internal Security and Safety", "Security"),
-    createData('Contingent Owned Equipment Officer [Temporary]', 'F-5', 254, 7692024),
-    createData(' SYSTEMS ASSISTANTny', 'F-5', 830, 357578),
-    createData('FACILITIESMANAGEMENTASSISTANT', 'F-5', 485, 70273),
-    createData('Mexico', 'F-5', 134, 1972550),
-    createData('Japan', 'JP', 1263, 377973),
-    createData('France', 'FR', 67022000, 640679),
-    createData('United Kingdom', 'GB', 67545757, 242495),
-    createData('Russia', 'RU', 146793744, 17098246),
-    createData('Nigeria', 'NG', 200962417, 923768),
-    createData('Brazil', 'BR', 210147125, 8515767),
+    createData('Contingent Owned Equipment Officer [Temporary]', 'F-5', 254, 7692024 , "dfdf"),
+    createData(' SYSTEMS ASSISTANTny', 'F-5', 830, 357578 , "dfdf"),
+    createData('FACILITIESMANAGEMENTASSISTANT', 'F-5', 485, 70273 , "dfdf"),
+    createData('Mexico', 'F-5', 134, 1972550 , "dfdf"),
+    createData('Japan', 'JP', 1263, 377973 , "dfdf"),
+    createData('France', 'FR', 67022000, 640679 , "dfdf"),
+    createData('United Kingdom', 'GB', 67545757, 242495 , "dfdf"),
+    createData('Russia', 'RU', 146793744, 17098246 , "dfdf"),
+    createData('Nigeria', 'NG', 200962417, 923768 , "dfdf"),
+    createData('Brazil', 'BR', 210147125, 8515767 , "dfdf"),
   ])
   const [tab1 , settab1] = useState(false);
 
@@ -198,6 +199,22 @@ function Tab1() {
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
+
+    <select placeholder = "saad" value = {selectvalue} onChange= {(event) => {
+      setselectvalue(event.target.value);
+      let filtered = dummyrows.filter((v,i) => {
+        // console.log(v , "value");
+        
+        return v.family.toLowerCase() == event.target.value.toLowerCase()
+      })
+      console.log(filtered, "filtered")
+      setRows([...filtered]);
+
+    }} >
+  <option value="A">Apple</option>
+  <option value="Security">Security</option>
+  <option value="C">Cranberry</option>
+</select>
 
     </div>
   );
